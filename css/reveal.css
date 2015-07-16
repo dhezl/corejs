@@ -34,7 +34,7 @@ body {
   color: #000; }
 
 .shadowed {
-  text-shadow: 0 0 0.2em #000
+  text-shadow: 0 0 0.3em #000 !important
 }
 
 /*********************************************
