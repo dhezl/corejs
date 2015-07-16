@@ -849,6 +849,64 @@ for(var i = 1; i <= 10; i ++) {
             <p>CodePen example: <a href="http://codepen.io/dhezlrazorfish/pen/gpKNzq" target="_blank">http://codepen.io/dhezlrazorfish/pen/gpKNzq</a></p>
           </section>
 
+          <section>
+            <h2>Hoisting</h2>
+            <p>JS will, at runtime, pull any <i>declarations</i> to the top of the containing obejct, while leaving any <i>assignments</i> in place.  This is called hoisting.</p>
+          </section>
+
+          <section>
+            <h2>Hoisting</h2>
+            <p>Right now, the idea of this is probably making your skin crawl.  With good reason. Hoisting can be a pain in the $%* if it catches you unawares, and can lead to some prodigiously sloppy code as developers move things around to try and deal with their assignments not getting hoisted.</p>
+          </section>
+
+          <section>
+            <h2>Hoisting</h2>
+            <pre>
+              <code>
+(function(){
+  
+  doesHoist();
+  doesNotHoist();
+  
+  function doesHoist() {
+    console.log("hoists!");
+  }
+  
+  doesNotHoist = function() {
+    console.log("does not hoist!");
+  }
+  
+})();
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Hoisting</h2>
+            <p>This works with other declarations/assignments just as it does with functions.</p>
+            <pre>
+              <code>
+(function(){
+  
+  doesHoist = "does";
+  
+  console.log(doesHoist);
+  console.log(doesNotHoist);
+  
+  var doesNotHoist = "does not";
+  var doesHoist;
+  
+})();
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>hoisting</h2>
+            <p>CodePen example: <a href="http://codepen.io/dhezlrazorfish/pen/xGzpZa" target="_blank">http://codepen.io/dhezlrazorfish/pen/xGzpZa</a></p>
+          </section>
+
+
 
 
         </section>
