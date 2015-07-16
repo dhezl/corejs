@@ -40,13 +40,13 @@
 
       <!-- Any section element inside of this container is displayed as a slide -->
       <div class="slides">
-        <section id="TitleCard">
+        <section id="titleCard">
           <h1>Core JavaScript</h1>
           <h3>School of Fish, 2015</h3>
         </section>
 
         <!-- SLIDE:  JavaScript then -->
-        <section id="JavaScriptIn2000" data-background="lib/img/2000.jpg">
+        <section id="jsThen" data-background="lib/img/2000.jpg">
           <h1>JavaScript in 2000</h1>
           <p class="shadowed">Fifteen years ago, you were liable to regularly encounter JavaScript in only a few scenarios:</p>
           <ul>
@@ -59,7 +59,7 @@
         </section>
 
         <!-- SLIDE:  JavaScript now -->
-        <section id="JavaScriptToday">
+        <section id="jsNow">
           <section>
             <h1>JavaScript in 2015</h1>
               <ul>
@@ -82,7 +82,7 @@
         </section>
 
         <!-- SLIDE:  Data Types -->
-        <section id="DataTypes">
+        <section id="dataTypes">
 
           <section data-transition="fade">
             <h1>Data Types</h1>
@@ -143,7 +143,7 @@ var detective = {firstName:"Rust", drinks:"Lone Star"};
         </section>
 
         <!-- SLIDE:  Arithmetic Operators -->
-        <section id="Operators: Arithmetic">
+        <section id="arithmeticOperators">
           <section data-transition="fade">
             <h1>Operators</h1>
             <h2>Arithmetic</h2>
@@ -195,7 +195,7 @@ var detective = {firstName:"Rust", drinks:"Lone Star"};
         </section>
 
         <!-- SLIDE:  Assignment Operators -->
-        <section id="Operators: Assignment">
+        <section id="assignmentOperators">
           <section data-transition="fade">
             <h1>Operators</h1>
             <h2>Assignment</h2>
@@ -240,7 +240,7 @@ var detective = {firstName:"Rust", drinks:"Lone Star"};
         </section>
 
         <!-- SLIDE:  Comparison Operators -->
-        <section id="Operators: Comparison">
+        <section id="comparisonOperators">
           <section data-transition="fade">
             <h1>Operators</h1>
             <h2>Comparison</h2>
@@ -301,11 +301,29 @@ var detective = {firstName:"Rust", drinks:"Lone Star"};
 
         <!-- SLIDE: ARRAYS -->
 
-        <section>
+        <section id="arrays">
           <section>
             <h1>Arrays</h1>
             <p class="fragment">Indexed lists of things. Very handy.</p>
             <p class="fragment">Oh, and the index always starts with 0.  Remember that.</a>
+          </section>
+
+          <section>
+            <h1>Arrays</h1>
+            <p>Accessing array members</p>
+            <pre><code>
+starks = ["Robb", "Sansa", "Arya", "Bran", "Rickon"];
+console.log(starks[3]); // returns Bran
+            </code></pre>
+          </section>
+
+          <section>
+            <h1>Arrays</h1>
+            <p>Is there anything in there?</p>
+            <pre><code>
+starks = ["Robb", "Sansa", "Arya", "Bran", "Rickon"];
+console.log(starks.length); // returns 5
+            </code></pre>
           </section>
 
           <section>
@@ -372,9 +390,293 @@ console.log(starks.indexOf("Arya"));
         </section>
 
 
+        <!-- SLIDE: OBJECTS -->
+
+        <section id="objects">
+
+          <section>
+            <h1>Objects</h1>
+            <p class="fragment">An object in JavaScript is basically a container. You can pretty much slug anything you want into an object:</p>
+            <ul>
+              <li class="fragment">values</li>
+              <li class="fragment">arrays</li>
+              <li class="fragment">functions</li>
+              <li class="fragment">other objects</li>
+          </section>
+
+          <section>
+            <h1>Objects</h1>
+            <p>Objects are defined with curly braces, and properties are given as name:value pairs:</p>
+            <pre>
+              <code>
+var user = {firstName: "Bob", lastName: "Moog", salutation: "Dr."};
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h1>Objects</h1>
+            <p>Object properties are accessed using either dot syntax (preferred in most cases), or array notation:</p>
+            <pre>
+              <code>
+var user = {firstName: "Bob", lastName: "Moog", salutation: "Dr."};
+console.log(user.lastName); // returns "Moog"
+console.log(user[lastName]); // returns "Moog"
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h1>Objects</h1>
+            <p>When do I use dot or brackets?</p>
+            <p>Generally speaking, dot is cleaner, easier to read, and is preferred.  Array-style access is used when you need special characters or arithmetic:</p>
+            <pre>
+              <code>
+var startingPoint = 0;
+var user = {firstName: "Bob", lastName: "Moog", salutation: "Dr."};
+console.log(user[startingPoint + 1]); // returns "Moog"
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h1>Objects</h1>
+            <p>Functions may be accessed inside of objects in two ways, as well:</p>
+            <p>Accessing functions with the invocation operator will return the result of that function. Doing so without the invocation operator will return the function definition.</p>
+            <pre>
+              <code>
+var startingPoint = 0;
+var user = {firstName: "Bob", sayHello: function(){ console.log("Hi there!"); } };
+console.log(user.sayHello()); // returns "Hi, there!"
+console.log(user.sayHello); // returns the function itself
+              </code>
+            </pre>
+          </section>
+
+        </section>
+
+        <!-- SLIDE: TRUTHINESS AND IMPLICIT COERCION -->
+
+        <section id="truthiness">
+
+          <section>
+            <h1>TRUTHINESS</h1>
+          </section>
+          
+          <section data-background="lib/img/colbert.png">
+            <p class="fragment shadowed">A really cool aspect of JavaScript is the fact that data types can be implicitly coerced from other data types, depending on usage.</p>
+            <p class="fragment shadowed">This is most commonly used when coercing a value to a boolean.  This is known as the value's <i>truthiness</i>.</p>
+          </section>
+
+          <section>
+            <h1>TRUTHINESS</h1>
+            <p>If non-boolean values are evaluated as booleans in JavaScript, a check for truthiness is being performed.  Any non-zero value will return <i>true</i>.  In this case, the value is said to be truthy.  This can be very useful when checking for the presence of a property, but look out—any non-zero returns as truthy; this means that numbers have their truthiness evaluated based on their absolute value!</p>
+            <p>If the coerced boolean comes back as <code>false</code>, then the value is said to be falsy.
+          </section>
+
+          <section>
+            <h1>TRUTHINESS</h1>
+            <pre>
+              <code>
+var myArray1 = ["foo", "bar", "baz"];
+var myArray2 = [];
+
+console.log(myArray1.length); // outputs 3
+if(myArray1.length){console.log("true")}; // outputs true
+if(myArray2.length){console.log("true")}; // no output
+if(myArray1.indexOf["tyrannosaurus"]){console.log("true")}; // outputs true
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>TRUTHINESS</h2>
+            <p>CodePen Example: <a href="http://codepen.io/dhezlrazorfish/pen/RPJQVV" target="_blank">http://codepen.io/dhezlrazorfish/pen/RPJQVV</a></p>
+          </section>
+
+        </section>
+
+        <!-- SLIDE: IF/ELSE LOGIC -->
+
+        <section id="conditionalLogic">
+
+          <section>
+            <h1>Conditional Logic</h1>
+            <p>Simple conditionals form the basis of logic in JavaScript. This is written fairly intuitively, with two or more conditions to be met, each with a set of curly braces containing the appropriate actions to take:</p>
+            <pre>
+              <code>
+var thinkingOfANumber = 10;
+if (thinkingOfANumber <= 10) {
+  console.log("I am thinking of a number from 1-10!");
+} else {
+  console.log("I am thinking of a number bigger than 10!");
+}
+// returns I am thinking of a number from 1-10!
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h1>Conditional Logic</h1>
+            <p>You can chain as many <code>if</code> conditions as you want, really:</p>
+            <pre>
+              <code>
+var thinkingOfANumber = 10;
+if (thinkingOfANumber === 1) {
+  console.log("My number is 1!");
+} else if (thinkingOfANumber <= 10) {
+  console.log("I am thinking of a number from 1-10!");
+} else {
+  console.log("I am thinking of a number bigger than 10!");
+}
+// returns I am thinking of a number from 1-10!
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h1>Conditional Logic</h1>
+            <p>Beware doing that too much, though, or nesting it too deep.  If your conditional logic gets too complex, that's a red flag.</p>
+            <p class="fragment">Shore it up by breaking it into discrete chunks.</p>
+          </section>
+
+          <section>
+            <h1>Conditional Logic</h1>
+            <p>Switch statements are another way to write long conditionals:</p>
+            <pre>
+              <code>
+var thinkingOfANumber = 10;
+switch(thinkingOfANumber) {
+  case 1:
+    console.log("your number is 1");
+    break;
+  case 2:
+    console.log("your number is 2");
+    break
+  default:
+    console.log("i don't care what your number is");
+}
+// returns i don't care what your numnber is
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h1>Conditional Logic</h1>
+            <p>Simple <code>if/else</code> statements can be written with what's called a <i>ternary</i></p>
+            <pre>
+              <code>
+if (2 + 2 === 4) {
+  console.log("Congrats on stating the obvious.")  
+} else {
+  console.log("Did you go to public school in Texas?")
+}
+// returns Did you go to public school in Texas?
+
+(2 + 2 === 4) ? console.log("correct") : console.log("incorrect");
+// returns correct
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h1>Conditional Logic</h1>
+            <p>...as an aside, ternaries can also be used for variable assignment:</p>
+            <pre>
+              <code>
+var foo = (2 + 2 === 4) ? "correct" : "incorrect";
+console.log(foo); // returns correct
+              </code>
+            </pre>
+            <p><small><i>(That is hell of slick!)</i></small></p>
+          </section>
+
+        </section>
+
+
+        <!-- SLIDE: LOOPS -->
+
+        <section id="loops">
+          
+          <section>
+            <h1>for loops</h1>
+            <p>The most common loop is the <code>for</code> loop:</p>
+            <pre>
+              <code>
+for (var i = 1; i <= 10; i ++) {
+  console.log(i);
+}
+// returns 12345678910
+              </code>
+            </pre>
+          </section>
+          
+          <section>
+            <h1>for loops</h1>
+            <p>Note that the middle portion of such a loop is a condition which must be met for the loop to stop running.  Typically, you see this as an expression, but—diving back into truthiness—any truthy value will work here:</p>
+            <pre>
+              <code>
+var starks = ["Robb", "Sansa", "Arya", "Bran", "Rickon"];
+for (var i = 0; starks[i]; i ++) {
+  console.log(starks[i]);
+}
+// returns Robb Sansa Arya Bran Rickon
+              </code>
+            </pre>
+          </section>
+          
+          <section>
+            <h1>while loops</h1>
+            <p><code>while</code> loops simplify things, if you are are able to:</p>
+            <pre>
+              <code>
+while (i <= 10) {
+  console.log(i);
+  i ++;
+}
+// returns 12345678910
+              </code>
+            </pre>
+          </section>
+          
+          <section>
+            <h1>while loops</h1>
+            <p>In fact, you can think if a <code>while</code> loop as simply a <code>for</code> loop with the first and third statements trimmed:</p>
+            <pre>
+              <code>
+var starks = ["Robb", "Sansa", "Arya", "Bran", "Rickon"];
+var i = 0;
+
+for (i; starks[i]; i ++) {
+  console.log(starks[i]);
+}
+
+for (; starks[i]; ) {
+  console.log(starks[i]);
+  i ++;
+}
+
+while(starks[i]) {
+  console.log(starks[i]);
+  i ++;
+}
+              </code>
+            </pre>
+          </section>
+
+        </section>
+
+        <!-- SLIDE: FIZZBUZZ -->
+
+        <section id="fizzbuzz">
+        <h2>Tying it all together: Fizz/Buzz</h2>
+        <p>CodePen example: <a href="http://codepen.io/dhezlrazorfish/pen/aOKLRN" target="_blank">http://codepen.io/dhezlrazorfish/pen/aOKLRN</a>
+        </section>
+
+
         <!-- Slide: Basic Functions -->
 
-        <section id="Functions">
+        <section id="functions">
           <section>
             <h1>Functions</h1>
             <p>Functions are a special type of object that is designed to perform a task. A function is executed when it is invoked by calling it using the <code>()</code> operator.
